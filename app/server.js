@@ -16,7 +16,7 @@ const { url } = require('../config/database');
 //const url = require('../config/database');
 mongoose.connect(url, { 
 	useMongoClient: true
-	promiseLibrary: global.Promise
+	//promiseLibrary: global.Promise
 });
 
 
