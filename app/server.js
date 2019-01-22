@@ -14,10 +14,11 @@ const session = require('express-session');
 //conexion a bd
 const { url } = require('../config/database');
 //const url = require('../config/database');
-mongoose.connect(url, { 
-	useMongoClient: true
+//mongoose.connect(url, { 
+	//useMongoClient: true
 	//promiseLibrary: global.Promise
-});
+//});
+mongoose.connect(url);
 
 
 require('../config/passport.js')(passport);
