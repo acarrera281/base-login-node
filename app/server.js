@@ -15,8 +15,8 @@ const session = require('express-session');
 const { url } = require('../config/database');
 //const url = require('../config/database');
 mongoose.connect(url, { 
-	//useMongoClient: true
-	//promiseLibrary: global.Promise
+	useMongoClient: true
+	promiseLibrary: global.Promise
 });
 
 
