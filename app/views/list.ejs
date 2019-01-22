@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile Page</title>
+    <% include cabeceras/cabecera %>
+  </head>
+ <body>
+    <div class="container">
+      <header class="text-center">
+        <h1>Lista de Usuarios</h1>
+        <a href="/logout" class="btn btn-primary btn-sm">
+          Menu Principal
+        </a>
+      </header>
+      <hr>
+      <div class="container">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title"><span class="fa fa-user"></span> Usuarios Registrados</h3>
+              <p>
+                <table class="table table-bordered">
+                  <tbody>
+                    <% usuarios.forEach(function(usuario){ %>
+                      <tr>
+                        <td>
+                          <%= usuario.local.userid%>
+                        </td>
+                        <td>
+                          <a href="/edit/<%=usuario._id%>" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-edit"></span> Editar
+                          </a> 
+                          <a href="/delete/<%=usuario._id%>" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-sign"></span> Eliminar
+                          </a>
+                        </td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

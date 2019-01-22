@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Profile Page</title>
+    <% include cabeceras/cabecera %>
+  </head>
+ <body>
+    <div class="container">
+      <header class="text-center">
+        <h1>Datos del registro</h1>
+        <a href="/logout" class="btn btn-primary btn-sm">
+          Logout
+        </a>
+      </header>
+      <hr>
+      <div class="container">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <form action="/edit/<%=usuarios._id%>/<%=usuarios.local.userid%>" value="Guardar" method="post">
+              <div class="form-group">
+                <label for="userid">Nombre de usuario</label>
+                <input type="userid" name="userid" class="form-control" value="<%=usuarios.local.userid%>"/>
+                <input type="id" name="id" class="form-control" value="<%=usuarios._id%>" style="visibility:hidden"/>
+              </div>
+              <div class="form-group">
+              <input type="submit" class="btn btn-success btn-lg">
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
