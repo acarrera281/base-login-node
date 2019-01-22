@@ -1,4 +1,4 @@
 module.exports = {
 	'url': 'mongodb://localhost/nodelogin'
-	'db': process.env.MONGODB 
+	//'db': process.env.MONGODB 
 };
