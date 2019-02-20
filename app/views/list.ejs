@@ -15,7 +15,7 @@
       </header>
       <hr>
       <div class="container">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <div class="card">
             <div class="card-body">
               <h3 class="card-title"><span class="fa fa-user"></span> Usuarios Registrados</h3>
@@ -25,15 +25,19 @@
                     <% usuarios.forEach(function(usuario){ %>
                       <tr>
                         <td>
-                          <%= usuario.local.userid%>
+                          <%= usuario.local.nombre%>
+                          <%= usuario.local.apellido%><br>
+                          <strong>Status:</strong> <%= usuario.local.status%>
                         </td>
                         <td>
+                          <div class="text-center">
                           <a href="/edit/<%=usuario._id%>" class="btn btn-warning">
-                            <span class="glyphicon glyphicon-edit"></span> Editar
-                          </a> 
+                            <span class="glyphicon glyphicon-edit"></span> Habilitar
+                          </a>
                           <a href="/delete/<%=usuario._id%>" class="btn btn-danger">
                             <span class="glyphicon glyphicon-remove-sign"></span> Eliminar
                           </a>
+                          </div>
                         </td>
                       </tr>
                     <% }); %>

@@ -17,20 +17,31 @@ module.exports = function (passport) {  //recibe el logueo del usuario y guarda 
 
   // Signup
   passport.use('local-signup', new LocalStrategy({  //Este es el metodo que permite registrar el usuario
-    usernameField: 'userid',
+    usernameField: 'email',
     passwordField: 'password',
-    passReqToCallback : true 
   },
-  function (req, userid, password, done) {  //permite la  busqueda del registro para ver si esta previamente guardado, de lo contrario lo ingresa
-    User.findOne({'local.userid': userid}, function (err, user) {
+  function (req, email, password,done) {  //permite la  busqueda del registro para ver si esta previamente guardado, de lo contrario lo ingresa   
+    User.findOne({'local.email': email}, function (err, user) {
       if (err) {
         return done(err);
       }
       if (user) {
         return done(null, false, req.flash('signupMessage', 'El usuario ya existe'));
       } else {
+        console.log("ahi va");
+        console.log(req.body);
         var newUser = new User();
-        newUser.local.userid = userid;
+        newUser.local.nombre = req.body.nombre;
+        newUser.local.apellido = apellido;
+        newUser.local.rut = rut;
+        newUser.local.tipo_rut = tipo_rut;
+        newUser.local.email = email;
+        newUser.local.fecha_nac = fecha_nac;
+        newUser.local.sexo = sexo;
+        newUser.local.banco = banco;
+        newUser.local.num_cta = num_cta;
+        newUser.local.tipo_cta = tipo_cta;
+        newUser.local.email_banco = email_banco;
         newUser.local.password = newUser.generateHash(password);
         newUser.save(function (err) {   //una vez que lo ingresa, procede a guardar el registro
           if (err) { throw err; }
@@ -42,12 +53,12 @@ module.exports = function (passport) {  //recibe el logueo del usuario y guarda 
 
   // login
   passport.use('local-login', new LocalStrategy({
-    usernameField: 'userid',
+    usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
   },
-  function (req, userid, password, done) {
-    User.findOne({'local.userid': userid}, function (err, user) {
+  function (req, email, password, done) {
+    User.findOne({'local.email': email}, function (err, user) {
       if (err) { return done(err); }
       if (!user) {
         return done(null, false, req.flash('loginMessage', 'El usuario no existe'))

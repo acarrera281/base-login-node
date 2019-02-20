@@ -2,30 +2,103 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Registro</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.11/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.11/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     <% include cabeceras/cabecera %>
   </head>
   <body class="signup">
     <div class="container">
-      <div class="col-sm-6 mx-auto">
+      <div class="col-sm-10 mx-auto">
         <div class="card mt-5">
           <div class="card-body">
             <!-- messages -->
             <h1 class="text-center">
-              <span class="glyphicon glyphicon-plus"></span> Signup
+              <span class="glyphicon glyphicon-plus"></span> Registro de Cliente
             </h1>
-
             <!-- form -->
-            <form action="/signup" method="post">
-              <div class="form-group">
-                <label for="userid">userid</label>
-                <input type="userid" name="userid" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" class="form-control">
-              </div>
-              <input type="submit" class="btn btn-success btn-lg">
+            <form data-toggle="validator" action="/signup" method="post">
+                  <div class="row">
+                      <div class="col">
+                        <label for="nombre">Nombre</label>
+                        <input type="nombre" name="nombre" class="form-control" required="true">
+                      </div>
+                      <div class="col">
+                        <label for="apellido">Apellido</label>
+                        <input type="apellido" name="apellido" class="form-control" required="true">
+                      </div>
+                  </div>
+                  <div class="row" style="margin-top: .4em;">
+                      <div class="col">
+                        <label for="rut">Numero de Documento Identidad</label>
+                        <input type="rut" name="rut" class="form-control" required="true">
+                      </div>
+                      <div class="col">
+                        <label for="tipo_rut">Tipo Documento</label>
+                          <select id="tipo_rut" type="tipo_rut" name="tipo_rut" class="form-control" required="true">
+                              <option selected>Rut</option>
+                              <option>Pasaporte</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="row" style="margin-top: .4em;">
+                      <div class="col">
+                        <label for="fecha_nac">Fecha de Nacimiento</label>
+                        <input id="datepicker" name="fecha_nac" class="form-control" type="fecha_nac" width="276" />
+                            <script>
+                                $('#datepicker').datepicker({
+                                    uiLibrary: 'bootstrap4'
+                                });
+                            </script>
+                      </div>
+                      <div class="col">
+                        <label for="sexo">Sexo</label>
+                        <select id="sexo" type="sexo" name="sexo" class="form-control">
+                              <option selected>Masculino</option>
+                              <option>Femenino</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="row" style="margin-top: .4em;">
+                      <div class="col">
+                        <label for="banco">Banco</label>
+                        <input type="banco" name="banco" class="form-control">
+                      </div>
+                      <div class="col">
+                        <label for="num_cta">Numero de Cuenta</label>
+                        <input type="num_cta" name="num_cta" class="form-control">
+                      </div>
+                  </div>
+                  <div class="row" style="margin-top: .4em;">
+                      <div class="col">
+                        <label for="tipo_cta">Tipo de Cuenta</label>
+                        <select id="tipo_cta" name="tipo_cta" type="tipo_cta" class="form-control">
+                              <option selected>Ahorro</option>
+                              <option>Corriente</option>
+                        </select>
+                      </div>
+                      <div class="col">
+                        <label for="email_banco">Email Asociado a Cuenta</label>
+                        <input type="email_banco" name="email_banco" class="form-control">
+                      </div>
+                  </div>
+                  <div class="row" style="margin-top: .4em;">
+                      <div class="col">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" required="true">
+                      </div>
+                      <div class="col">
+                        <label for="password">Password</label>
+                        <input type="password" required="true" name="password" class="form-control" id="inputPassword4" placeholder="Password">
+                      </div>
+                  </div>
+                  <div class="text-center" style="margin-top: .6em;">
+                  <input type="submit" class="btn btn-success btn-lg">
+                  </div>
+
             </form>
 
             <hr>

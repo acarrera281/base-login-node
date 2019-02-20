@@ -15,17 +15,27 @@
       </header>
       <hr>
       <div class="container">
-        <div class="col-sm-6">
+        <div class="col-sm-6 mx-auto">
           <div class="card">
             <div class="card-body">
-              <form action="/edit/<%=usuarios._id%>/<%=usuarios.local.userid%>" value="Guardar" method="post">
+              <div class="text-center">
+                  <h3 class="card-title"><span class="fa fa-user"></span> Usuario</h3>
+              </div>
+              <form action="/edit/<%=usuarios._id%>/<%=usuarios.local.comision%>" value="Guardar" method="post">
               <div class="form-group">
-                <label for="userid">Nombre de usuario</label>
-                <input type="userid" name="userid" class="form-control" value="<%=usuarios.local.userid%>"/>
+                <strong>Nombre</strong> : <%= usuarios.local.nombre %> <br>
+                <strong>Apelido</strong> : <%= usuarios.local.apellido %> <br>
+                <strong>Banco</strong> : <%= usuarios.local.banco %> <br>
+                <strong>Tipo de Cuenta</strong> : <%= usuarios.local.tipo_cta %> <br>
+                <strong>Numero de Cuenta</strong> : <%= usuarios.local.num_cta %> <br>
+                <strong>Comision</strong> : <br>
+                <input type="number" step="0.1" min="0" max="1" name="comision" class="form-control" value="<%=usuarios.local.comision%>"/>
                 <input type="id" name="id" class="form-control" value="<%=usuarios._id%>" style="visibility:hidden"/>
               </div>
               <div class="form-group">
-              <input type="submit" class="btn btn-success btn-lg">
+              <div class="text-center">
+                <input type="submit" class="btn btn-success btn-lg">
+              </div>
             </form>
             </div>
           </div>

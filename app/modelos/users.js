@@ -3,8 +3,25 @@ const bcrypt = require('bcrypt-nodejs');  //cifrado de claves
 
 const userSchema = new mongoose.Schema({
   local: {
-    userid: String,
-    password: String
+    /*userid: {
+    	type: Number,
+        autoIncrement: true,
+        //primaryKey: true
+    },*/
+    nombre: String,
+    apellido: String,
+    rut: String,
+    tipo_rut: String,
+    email: String,
+    password: String,
+    fecha_nac: Date,
+    sexo: String,
+    banco: String,
+    num_cta: String,
+    tipo_cta: String,
+    email_banco: String,
+    comision: { type: Number, default: 0 },
+    status:{ type: String, default: 'Pendiente'}
   }
 });
 
