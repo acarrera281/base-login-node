@@ -3,11 +3,6 @@ const bcrypt = require('bcrypt-nodejs');  //cifrado de claves
 
 const userSchema = new mongoose.Schema({
   local: {
-    /*userid: {
-    	type: Number,
-        autoIncrement: true,
-        //primaryKey: true
-    },*/
     nombre: String,
     apellido: String,
     rut: String,

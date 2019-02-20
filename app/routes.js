@@ -18,6 +18,7 @@ module.exports = (app, passport)=>{
 		res.render('login');
 	});
 
+	//metodo post para el login de usuarios
 	app.post('/login', passport.authenticate('local-login', {  
 		successRedirect: '/profile',
 		failureRedirect: '/login',
@@ -28,15 +29,9 @@ module.exports = (app, passport)=>{
 		res.render('signup', {
 			message: req.flash('signupMessage')
 		});
-		//res.render('signup');
 	});
 
-	/*app.post('/signup', passport.authenticate('local-signup', {
-		successRedirect: '/profile',
-		failureRedirect: '/signup',
-		failureFlash: true // allow flash messages
-	}));*/
-
+	//Metodo Post que ejecuta el guardado de los usuarios (referidos)
 	app.post('/signup', function(req, res){
 
         var nombre = req.body.nombre;
@@ -83,15 +78,15 @@ module.exports = (app, passport)=>{
 		    });
 	});
 
+	//ruta que lleva al formulario de registro de transacciones
 	app.get('/register/transaccion', (req, res) => {
 		res.render('transaccion', {
 			message: req.flash('signupMessage')
 		});
-		//res.render('signup');
 	});
 
+	//MEtodo que permite el guardado de las transacciones
 	app.post('/register/transaccion', function(req, res){
-
         var monto = req.body.monto;
         var tipoMoneda = req.body.tipoMoneda;
         var detalle = req.body.detalle;
@@ -111,8 +106,8 @@ module.exports = (app, passport)=>{
 			});
     });
 
+	//Ruta que permite ver la informacion de todos los usuarios registrados una vez que los mismos se loguean
 	app.get('/profile', isLoggedIn, (req, res) => {
-		console.log("entro a profile");
 		console.log(req.user);
 		res.render('profile', {
 			user: req.user
@@ -124,6 +119,7 @@ module.exports = (app, passport)=>{
 		res.redirect('/');
 	});
 
+	//PErmite ver la lista de los usuarios registrados
 	app.get('/list', (req, res) => {
 		Usuario.find(gotUsers)
   		function gotUsers (err, usuarios) {
@@ -135,7 +131,7 @@ module.exports = (app, passport)=>{
   		}
 	});
 
-	app.get('/edit/:id',(req,res)=>{
+	/*app.get('/edit/:id',(req,res)=>{
 		// Obtención del parámetro id desde la url
   		var id = req.params.id
   		Usuario.findById(id, gotUsers)
@@ -146,8 +142,9 @@ module.exports = (app, passport)=>{
 	    	}
 	    	return res.render('edit', {title: 'Usuario', usuarios: usuarios})
   		}
-  	});
+  	});*/
     
+    //permite agregar el porcentaje de comision a un usuario en especifico y a su vez cambiar su status
     app.post('/edit/:id/:comision',(req,res)=>{
 				  var comision = req.body.comision;
 				  var id = req.body.id;
@@ -181,6 +178,7 @@ module.exports = (app, passport)=>{
 				  }
 	});
 
+    //elimina usuarios
 	app.get('/delete/:id',(req,res)=>{
 	  	var id = req.params.id
 
