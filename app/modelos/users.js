@@ -11,12 +11,12 @@ const userSchema = new mongoose.Schema({
     password: String,
     fecha_nac: Date,
     sexo: String,
-    banco: String,
-    num_cta: String,
-    tipo_cta: String,
-    email_banco: String,
-    comision: { type: Number, default: 0 },
-    status:{ type: String, default: 'Pendiente'}
+    //banco: String,
+    //num_cta: String,
+    //tipo_cta: String,
+    //email_banco: String,
+    //comision: { type: Number, default: 0 },
+    //status:{ type: String, default: 'Pendiente'}
   }
 });
 
